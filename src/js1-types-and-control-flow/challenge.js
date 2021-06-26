@@ -19,7 +19,7 @@ const firstName = "John";
 const lastName = "Smith";
 
 export const createFullName = () => {
-  // Write your code here
+  return firstName + " " + lastName;
 };
 
 /**
@@ -32,8 +32,10 @@ const largeNumber1 = 100;
 const largeNumber2 = 200;
 
 export const findLargestNumber = () => {
-  // Write your code here
+  return Math.max (largeNumber1, largeNumber2);
 };
+
+// used https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max as a reference
 
 /**
  * A function that programmatically adds two numbers together.
@@ -45,8 +47,10 @@ const addNumber1 = 12;
 const addNumber2 = 24;
 
 export const addNumbers = () => {
-  // Write your code here
+  return Number(addNumber1) + Number(addNumber2);
 };
+
+// used https://smallbusiness.chron.com/addition-html-35827.html as a reference.
 
 /* Intermediate Challenges */
 
@@ -59,8 +63,10 @@ export const addNumbers = () => {
 const password = "thisIsMyVeryLongPassword123456789";
 
 export const findLengthOfPassword = () => {
-  // Write your code here
+  return password.length;
 };
+
+// used https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_string_length as a reference.
 
 /**
  * A function that programmatically tells you what the type of the variable is.
@@ -75,8 +81,18 @@ export const findLengthOfPassword = () => {
 const thing = "I am a thing";
 
 export const findType = () => {
-  // Write your code here
+if (typeof thing === "string") { 
+  return "This is a string";
+} else if(typeof thing === "number") {
+  return "This is a number";
+} else if(typeof thing === "boolean") {
+  return "This is a boolean";
+} else {
+  return "I don't know what this thing is";
+}
 };
+
+// used https://stackoverflow.com/questions/4456336/finding-variable-type-in-javascript as a reference
 
 /**
  * A function to programmatically decide if a name is suitable for a name tag.
@@ -88,7 +104,7 @@ export const findType = () => {
 const nameTagOption = "Timothy";
 
 export const getIsValidOnNameTag = () => {
-  // Write your code here
+ 
 };
 
 /* Advanced Challenges */
