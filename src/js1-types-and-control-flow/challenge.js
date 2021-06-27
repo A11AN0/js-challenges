@@ -103,8 +103,22 @@ if (typeof thing === "string") {
  */
 const nameTagOption = "Timothy";
 
+
 export const getIsValidOnNameTag = () => {
  
+const IdealName = nameTagOption.charAt(0).toUpperCase().substring(0, 8) + nameTagOption.slice(1);
+if (IdealName === nameTagOption) {
+    return (true);
+} else {
+  return "Please enter a name with a capital first letter and maximum of 8 characters";
+}
+
+/* 0mg this one was kind of hard!, I used some trial and error when making this such as putting the
+.substring(0, 8) before + nameTagOption.slice(1). For reference I used 
+https://flexiple.com/javascript-capitalize-first-letter/
+https://www.w3schools.com/jsref/jsref_substring.asp
+*/
+
 };
 
 /* Advanced Challenges */
@@ -118,7 +132,9 @@ export const getIsValidOnNameTag = () => {
 const stringToConvert = "14.45";
 
 export const convertStringToNumber = () => {
-  // Write your code here
+  return Number (stringToConvert)
+
+  // reference used https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
 };
 
 /**
