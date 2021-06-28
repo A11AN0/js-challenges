@@ -132,7 +132,7 @@ https://www.w3schools.com/jsref/jsref_substring.asp
 const stringToConvert = "14.45";
 
 export const convertStringToNumber = () => {
-  return Number (stringToConvert)
+  return Number (stringToConvert);
 
   // reference used https://gomakethings.com/converting-strings-to-numbers-with-vanilla-javascript/
 };
@@ -148,8 +148,16 @@ export const convertStringToNumber = () => {
 const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
 
 export const getHasUppercaseLetters = () => {
-  // Write your code here
+  return (/[A-Z]/g.test(stringWithUppercaseLetters));
 };
+
+/* This one was super tricky, I had to do alot of searching and use alot of references to wrap my head around regex
+(which I'll probably be doing for awhile). 
+https://www.youtube.com/watch?v=sXQxhojSdZM
+https://stackoverflow.com/questions/6603015/check-whether-a-string-matches-a-regex-in-js
+http://www.rexegg.com/regex-quickstart.html#ref
+*/
+
 
 /* Expert Challenge */
 
@@ -163,4 +171,15 @@ const pascalCaseVariableName = "IWantToBeSnakeCase";
 
 export const convertPascalCaseToSnakeCase = () => {
   // Write your code here
+
+const SnakeString = pascalCaseVariableName.split(/(?=[A-Z])/).join('_').toLowerCase();
+return SnakeString;
+
+/* 
+references used include
+https://www.codegrepper.com/code-examples/javascript/convert+pascal+case+to+snake+case+javascript
+http://www.rexegg.com/regex-quickstart.html#ref
+https://cs.lmu.edu/~ray/notes/regex/
+*/
+
 };
