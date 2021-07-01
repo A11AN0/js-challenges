@@ -17,7 +17,7 @@
  * @returns {string} John Smith
  */
 export const createFullName = (firstName, lastName) => {
-  /* Write your code here */
+  return `${firstName} ${lastName}`;
 };
 
 /**
@@ -28,9 +28,10 @@ export const createFullName = (firstName, lastName) => {
  * @param {number} number2 200
  * @returns {number} 100
  */
-export const findSmallestNumber = (/* Write the parameters here */) => {
-  /* Write your code here */
+export const findSmallestNumber = (number1, number2) => {
+  return Math.min (number1, number2);
 };
+// based code upon 2nd challenge from from js-1
 
 /**
  * A function that takes two numbers as input, multiplies them together and returns the product.
@@ -40,8 +41,8 @@ export const findSmallestNumber = (/* Write the parameters here */) => {
  * @param {number} number2 6
  * @returns {number} 18
  */
-export const multiplyNumbers = (/* Write the parameters here */) => {
-  /* Write your code here */
+export const multiplyNumbers = (number1, number2) => {
+  return number1 * number2;
 };
 
 /* Intermediate Challenges */
@@ -57,7 +58,13 @@ export const multiplyNumbers = (/* Write the parameters here */) => {
  * @returns {string} "You got a new high score!" | "So close!" | "Better luck next time!"
  */
 export const checkIfNewHighScore = (score, highScore) => {
-  /* Write your code here */
+  if (score > highScore) {
+    return "You got a new high score!";
+  } else if (score === highScore) {
+    return "So close!";
+  } else if (score < highScore) {
+    return "Better luck next time!"
+  }
 };
 
 /**
@@ -67,7 +74,8 @@ export const checkIfNewHighScore = (score, highScore) => {
  * @returns {string} "15 degrees celsius is 59 degrees fahrenheit"
  */
 export const celsiusToFahrenheit = (tempInCelsius) => {
-  /* Write your code here */
+  const degreesFahrenheit = (tempInCelsius * 1.8) + 32;
+  return String (tempInCelsius + " degrees celsius is " + degreesFahrenheit + " degrees fahrenheit") 
 };
 
 /**
@@ -78,9 +86,15 @@ export const celsiusToFahrenheit = (tempInCelsius) => {
  * @param {number} age 25
  * @param {number} maxAge 90
  * @returns {number} 47450
+ * 
+ * @param {number} snickersPerDay 1
+ * @param {number} age 20
+ * @param {number} maxAge 70
  */
 export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
-  /* Write your code here */
+  const timeLeft = maxAge - age;
+  const totalAmount = timeLeft * snickersPerDay * 365;
+  return totalAmount;
 };
 
 /* Advanced Challenges */
@@ -100,7 +114,26 @@ export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
  * @returns {string} A - F | Score unavailable
  */
 export const getGrade = (score) => {
-  /* Write your code here */
+  let grade;
+
+if (typeof score !== "number" || score < 0 || score > 100) { 
+  return "Score unavailable";
+} else if (score >= 80) {
+  return 'A';
+} else if (score >= 70) {
+  return 'B';
+}else if (score >= 60) {
+  return 'C';
+}else if (score >= 50) {
+  return 'D';
+}else if (score >= 40) {
+  return 'E';
+} else if (score >= 0) { 
+  return 'F';
+}
+
+// refeerence used https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
+
 };
 
 /**
@@ -110,8 +143,13 @@ export const getGrade = (score) => {
  * @returns {number} 28.27
  */
 export const calculateAreaOfCirlce = (radius) => {
-  /* Write your code here */
+  const area = Math.PI *Math.pow(radius, 2)
+  const roundedArea = Number (area.toFixed(2))
+  return roundedArea;
 };
+
+// reference used https://www.w3schools.com/jsref/jsref_tofixed.asp
+
 
 /* Expert Challenge */
 
@@ -131,5 +169,21 @@ export const calculateAreaOfCirlce = (radius) => {
  * @param {string} name John
  */
 export const getStudentSummary = (score, name) => {
-  /* Write your code here */
+  if (typeof score !== "number" || score < 0 || score > 100) { 
+    return "My apologies " + name + ", there's been an error in processing your grade.";
+  } if (score >= 80) {
+    return "Congratulations " + name + "! You achieved a grade of A.";
+  } else if (score >= 70) {
+    return "Well done " + name + "! You achieved a grade of B.";
+  }else if (score >= 60) {
+    return "Nicely done " + name + "! You achieved a grade of C.";
+  }else if (score >= 50) {
+    return "That's okay " + name + ". You achieved a grade of D.";
+  }else if (score >= 40) {
+    return "Too bad " + name + ". You achieved a grade of E.";
+  } else if (score >= 0) { 
+    return "Sorry " + name + ". You achieved a grade of F. There's always next year.";
+  }
+
+  // based upon advanced grading (js2-) challenge 
 };
