@@ -21,8 +21,10 @@
  * @return {string} "Bacon+Lettuce+Tomato"
  */
 
-export const createRecipeString = (ingredientsArr) => {
-  return;
+export const createRecipeString = ingredientsArr => {
+
+  const recipeString = ingredientsArr.join("+");
+  return recipeString;
 };
 
 /**
@@ -33,8 +35,12 @@ export const createRecipeString = (ingredientsArr) => {
  */
 
 export const getFirstAndLastItems = (itemsArr) => {
-  return;
+
+  const firstItem = itemsArr[0];
+  const lastItem = itemsArr[itemsArr.length - 1];
+  return [firstItem, lastItem];
 };
+// reference used https://stackoverflow.com/questions/43714111/get-the-first-and-last-item-in-an-array-js/43714143
 
 /**
  * A function that takes an array of scores and totals the scores by looping through the array.
@@ -44,8 +50,22 @@ export const getFirstAndLastItems = (itemsArr) => {
  */
 
 export const totalScores = (scoreArr) => {
-  return;
+
+  let sum = 0;
+
+  for (let index=0; index < scoreArr.length; index++) {
+    sum += scoreArr[index];
+  }
+  return sum;
 };
+// this was so hard :(, but finally managed to do it
+/*  
+The references I used for this challenge are 
+https://stackoverflow.com/questions/33193664/the-sum-of-all-the-elements-in-an-array
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Addition_assignment
+and the older challenges lol.
+*/
+
 
 /**
  * Intermediate Challenges
@@ -60,8 +80,15 @@ export const totalScores = (scoreArr) => {
  */
 
 export const totalRange = (rangeMax) => {
-  return;
+  let sum = 0;
+  for (let index=0; index <= rangeMax; index++) {
+    sum += index;
+  }
+  return sum;
 };
+
+// reference used https://thecodebarbarian.com/javascript-reduce-in-5-examples.html
+
 
 /**
  * A function that takes an array and returns a NEW ARRAY where the last item has been moved to the front of the array and removed from the back.
@@ -71,8 +98,14 @@ export const totalRange = (rangeMax) => {
  */
 
 export const moveFirstAndLastItems = (itemsArr) => {
-  return;
+  const newArr = [...itemsArr];
+  const lastItem = newArr.pop();
+  newArr.unshift(lastItem);
+  return newArr;
 };
+
+// used this for reference https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/
+
 
 /**
  * Read this article on how to clone an array.
@@ -89,8 +122,16 @@ export const moveFirstAndLastItems = (itemsArr) => {
  */
 
 export const removeEvenNumbers = (numberArr) => {
-  return;
+
+  const clonedArr = [...numberArr];
+  return clonedArr.filter(n => n % 2 !== 0)
 };
+
+// references which I used for this https://stackoverflow.com/questions/61670299/how-can-i-remove-even-numbers-from-an-array
+// https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/ (esp. answer 2 (u can do this in 1 line))
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+
+
 
 /**
  * Advanced Challenges
@@ -105,8 +146,21 @@ export const removeEvenNumbers = (numberArr) => {
  */
 
 export const generateAverage = (numberArr) => {
-  return;
+
+  let sum = 0;
+
+  for (let index=0; index < numberArr.length; index++) {
+    sum += numberArr[index];  
+  }
+
+  if (sum<0 || sum > 0) {
+    return (Math.round(sum/numberArr.length));
+  } else {
+    return (0);
+  }
 };
+// used some creativity here https://pawelgrzybek.com/rounding-and-truncating-numbers-in-javascript/
+
 
 /**
  * A function that uses a loop to reverse the order of an Array. It should return a NEW ARRAY and not Mutate the orginal array.
@@ -116,8 +170,10 @@ export const generateAverage = (numberArr) => {
  */
 
 export const reverseOrder = (toReverseArr) => {
-  return;
+  const clonedArr = [...toReverseArr]
+  return (clonedArr.reverse());
 };
+// https://www.tutorialspoint.com/javascript/array_reverse.htm
 
 /**
  * Expert Challenges
