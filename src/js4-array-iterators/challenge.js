@@ -13,6 +13,10 @@
  * Foundation Challenges
  */
 
+// MAP -> Gives us a new array and allows funtion applied to each item in array.
+// FILTER -> Gives a new array, but each item has to pass a condition
+// FOREACH -> It won't give a new array, it's READ ONLY, but it will give you access to each item in the array.
+
 /**
  * A function that takes an array of Booleans and then removes the false values from the given array.
  * It should create a new array only consiting of the true values.
@@ -22,7 +26,9 @@
  */
 
 export const removeFalseValues = (booleanArr) => {
-  return;
+
+  const newArr = booleanArr.filter((boolean) => boolean === true);
+  return newArr; 
 };
 
 /**
@@ -34,8 +40,11 @@ export const removeFalseValues = (booleanArr) => {
  */
 
 export const createPercentageList = (numbersArr) => {
-  return;
+
+  const percentageArr = numbersArr.map((number) => String (number * 100)+"%");
+  return percentageArr;
 };
+
 
 /**
  * A function that takes an array of possessions and a name.
@@ -47,7 +56,8 @@ export const createPercentageList = (numbersArr) => {
  */
 
 export const createListOfPoessessions = (possessionsArr, name) => {
-  return;
+  const prefixedArr = possessionsArr.map((possesion) => name + " " + possesion);
+  return prefixedArr;
 };
 
 /**
@@ -72,8 +82,11 @@ export const createListOfPoessessions = (possessionsArr, name) => {
  */
 
 export const convertStringToNumbersArray = (numberString) => {
-  return;
+  const separateNumbers =  numberString.split("+").map((number) => Number(number))
+  return separateNumbers;
 };
+// kinda tough but https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split definitely came in handy
+
 
 /**
  * A function that takes a string of numbers joined with a "+" and creates a new array based on if the number is even or odd.
@@ -84,8 +97,16 @@ export const convertStringToNumbersArray = (numberString) => {
  */
 
 export const createOddEvenArray = (numberString) => {
-  return;
+  const separateNumbers = numberString.split("+").map((number) => {
+    if (number % 2 !== 0) {
+      return "odd"; 
+    } else {
+      return "even";
+    }
+  })
+  return separateNumbers;
 };
+// omg i can't believe i did it? XD, used past examples and applied them to this.
 
 /**
  * A function that takes an array of book titles and a search term.
@@ -97,8 +118,10 @@ export const createOddEvenArray = (numberString) => {
  */
 
 export const filterBooksBySearch = (booksArr, searchTerm) => {
-  return;
+  const filteredArr = booksArr.filter((book)=> book.includes(searchTerm));
+  return filteredArr;
 };
+// this one was not too bad, used some insight from one of the filter code alongs!
 
 /**
  * Advanced Challenges
@@ -117,17 +140,11 @@ export const filterBooksBySearch = (booksArr, searchTerm) => {
  */
 
 export const formatStringArray = (stringArr) => {
-  const cleanedArr = stringArr.forEach((string) => {
-    const cleanStr = string.trim().toLowerCase();
-    return cleanStr;
-  });
-
-  // console.log(???)
-
+  const cleanedArr = stringArr.map((string) => string.trim().toLowerCase());
   const joinedString = cleanedArr.join("+");
-
   return joinedString;
 };
+// omg i did it lol, didn't need to use too many resources; mainly just looked at past experience and other attempts.
 
 /**
  * A function that takes a string, cleans it and formats it based on a condition.
@@ -143,8 +160,16 @@ export const formatStringArray = (stringArr) => {
  */
 
 export const formatString = (string) => {
-  return;
+  const onlyLettersArr = string.split('').filter(char => /[a-zA-z]/.test(char));
+  const upperLowercaseArr = onlyLettersArr.map((letter) => {
+    const letterNumber= letter.charCodeAt();
+      if (letterNumber % 2 === 0) {
+        return letter.toUpperCase();
+      } else return letter.toLowerCase();
+  })
+  return upperLowercaseArr;
 };
+
 
 /**
  * Expert Challenge
