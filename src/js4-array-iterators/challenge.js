@@ -169,6 +169,10 @@ export const formatString = (string) => {
   })
   return upperLowercaseArr;
 };
+// https://www.codegrepper.com/code-examples/javascript/given+a+string+replace+every+letter+with+its+position+in+the+alphabet+javascript
+// https://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
+// https://stackoverflow.com/questions/58259610/how-do-i-filter-out-a-string-to-contain-only-letters-in-vanilla-javascript
+
 
 
 /**

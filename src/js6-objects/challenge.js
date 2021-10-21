@@ -21,7 +21,7 @@
  * @return {number} The price of the piece of furniture
  */
 export const getFurniturePrice = (furniture) => {
-  /* Write code here */
+  return (furniture.price);
 };
 
 /**
@@ -32,7 +32,8 @@ export const getFurniturePrice = (furniture) => {
  * @returns {{name: string, price: number, location: string}} furniture - A furniture object from the catalogue
  */
 export const setFurnitureStoreLocation = (furniture, location) => {
-  /* Write code here */
+  furniture.location = location;
+  return(furniture);
 };
 
 /**
@@ -46,7 +47,13 @@ export const setFurnitureStoreLocation = (furniture, location) => {
  * @returns {{name: string, noOfSeats: number, engineType: string, canTravelSolarSystems: boolean}} spaceship - The space ship object
  */
 export const makeSpaceship = (name, noOfSeats, engineType, canTravelSolarSystems) => {
-  /* Write code here */
+  const spaceShip = {
+    name: name,
+    noOfSeats: noOfSeats,
+    engineType: engineType,
+    canTravelSolarSystems: canTravelSolarSystems
+  }
+  return spaceShip;
 };
 
 /* Intermediate Challenges */
@@ -59,7 +66,10 @@ export const makeSpaceship = (name, noOfSeats, engineType, canTravelSolarSystems
  * @returns {{name: string, username: string}} User - The user object with the same username or a new one
  */
 export const setUserName = (user, username) => {
-  /* Write code here */
+  if (!user.username){
+    user.username = username;
+  }
+  return user;
 };
 
 /**
@@ -70,7 +80,11 @@ export const setUserName = (user, username) => {
  * @returns {{fullName: string, firstName: string, lastName: string}} A customer object from the database with the name separated into first and last
  */
 export const splitFullNameToFirstAndLast = (customer) => {
-  /* Write code here */
+  const nameArray = customer.fullName.split(" ");
+  customer.fullName = customer.fullName;
+  customer.firstName = nameArray[0];
+  customer.lastName = nameArray[1];
+  return (customer);
 };
 
 /**
@@ -83,8 +97,14 @@ export const splitFullNameToFirstAndLast = (customer) => {
  * @returns {any} value - The value you have accessed on the object
  */
 export const accessGivenKey = (object, key) => {
-  /* Write code here */
-};
+  const keysArr = Object.keys(object);
+  const keyArrayNumber = keysArr.indexOf(key);
+  const objectValuesArray = Object.values(object); 
+
+  return objectValuesArray[keyArrayNumber];
+}; //lol kinda went the long way with this
+
+
 
 /* Advanced Challenges */
 
@@ -96,7 +116,8 @@ export const accessGivenKey = (object, key) => {
  * @returns {string} An address string for a shipping label
  */
 export const getUserAddress = (user) => {
-  /* Write code here */
+  const addressObj = user.address;
+  return(`${addressObj.line1} ${addressObj.line2} ${addressObj.city} ${addressObj.postcode}`);
 };
 
 /**
@@ -108,7 +129,26 @@ export const getUserAddress = (user) => {
  * @return {{id: number, name: string, allergies: string[], safeAllergens: string[]}} customer
  */
 export const setSafeAllergens = (customer, allergenList) => {
-  /* Write code here */
+
+  const allergies = customer.allergies;
+  const safeAllergens =Array.from(allergenList);
+
+  for(var i=0; i<allergenList.length; i++){
+    const allergen = allergenList[i]
+ 
+    for(var m=0; m<allergies.length; m++){
+        const allergy = allergies[m]
+        if(allergy === allergen){
+         safeAllergens.splice(safeAllergens.indexOf(allergy),1);
+        }
+        
+    }
+ }
+ 
+customer.safeAllergens = safeAllergens;
+
+return customer;
+ 
 };
 
 /* Expert Challenge */
@@ -122,5 +162,8 @@ export const setSafeAllergens = (customer, allergenList) => {
  * @returns {{id: number, location: string, sku: string, name: string, price: number, isAvailable: boolean}}
  */
 export const mergeFurniture = (furnitureLocationData, furnitureProductData) => {
-  /* Write code here */
+  const mergedFurnitureData = Object.assign(furnitureLocationData,furnitureProductData);
+  return mergedFurnitureData;
+
+  //need to make a loop that goes thru the values for each, and if either is equal, then do something? idk lol
 };

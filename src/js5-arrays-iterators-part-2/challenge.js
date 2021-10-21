@@ -9,6 +9,10 @@
   share it with the group!
 */
 
+// Charlie's hints;
+// array methods to look up.
+// Reduce(), join(), sort(), indexof(), and reverse()
+
 /**
  * Foundation Challenges
  */
@@ -22,7 +26,10 @@
  */
 
 export const totalScoresArr = (scoresArr) => {
-  return;
+  const totalScores = scoresArr.reduce ((accumulator, current) => {
+    return accumulator + current;
+  }, 0);
+  return totalScores;
 };
 
 /**
@@ -35,8 +42,16 @@ export const totalScoresArr = (scoresArr) => {
  */
 
 export const reverseString = (toReverse) => {
-  return;
+  const stringToArr = toReverse.split("");
+  const arrReverse = stringToArr.reverse();
+  const reversedString = stringToArr.join("")
+  return reversedString;
 };
+// used https://www.codegrepper.com/code-examples/javascript/combine+an+array+of+letters+into+a+string+javascript
+// https://www.samanthaming.com/tidbits/83-4-ways-to-convert-string-to-character-array/
+// https://www.w3schools.com/jsref/jsref_split.asp
+
+
 
 /**
  * A function that arranges an array of characters alphabetically.
@@ -48,8 +63,11 @@ export const reverseString = (toReverse) => {
  */
 
 export const sortCharactersAlphabetically = (charcterArr) => {
-  return;
+  const alphabeticalOrder = charcterArr.map((letter) => letter.toLowerCase())
+  const inOrder = alphabeticalOrder.sort();
+  return inOrder;
 };
+// used this reference https://www.w3schools.com/jsref/jsref_sort.asp and some imagination XD.
 
 /**
  * Intemediate Challenges
@@ -63,8 +81,10 @@ export const sortCharactersAlphabetically = (charcterArr) => {
  */
 
 export const sortNumbersHighToLow = (numberArr) => {
-  return;
+  const orderedArr = numberArr.sort((a , b) => b - a);
+  return orderedArr;
 };
+// this was really interesting, this was the reference I used https://stackoverflow.com/questions/1063007/how-to-sort-an-array-of-integers-correctly
 
 /**
  * A function that checks if a given item is 'instock'.
@@ -94,7 +114,15 @@ export const checkItemInstock = (toCheck) => {
     "blueberry",
     "melon",
   ];
-  return;
+
+  const termPresent = stockList.includes(toCheck);
+  const itemIndex = stockList.indexOf(toCheck);
+
+  if (termPresent === true) {
+    return String(toCheck + " is instock, it is on aisle " + itemIndex +".")
+  } else {
+    return String("Sorry " + toCheck + " is not instock.")
+  }
 };
 
 /**
@@ -108,8 +136,16 @@ export const checkItemInstock = (toCheck) => {
  */
 
 export const checkPrimaryColours = (coloursArr) => {
-  return;
+  // const primaryColours = coloursArr.includes("red", "blue", "yellow");
+  // return primaryColours;
+
+  // Had to turn to the solutions for this one XD
+const primaryColours = ["red", "blue", "yellow"];
+const colourCheck = coloursArr.every((colour) => primaryColours.includes(colour));
+return colourCheck;
 };
+
+
 
 /**
  * Advanced Challenges
@@ -125,8 +161,13 @@ export const checkPrimaryColours = (coloursArr) => {
  */
 
 export const checkStringPalindrome = (stringOne) => {
-  return;
+  const palCheck = stringOne.split('').reverse().join('');
+  const isPal = palCheck == stringOne;
+
+  return isPal;
 };
+// this one was somewhat easier than the last XD, used this example https://stackoverflow.com/questions/14813369/palindrome-check-in-javascript
+
 
 /**
  * A function that totals a nested array of scores arrays.

@@ -108,7 +108,7 @@ export const splitFullNameToFirstAndLast = (customer) => {
  * @returns {any} value - The value you have accessed on the object
  */
 export const accessGivenKey = (object, key) => {
-  const value = object[key];
+  const value = object[key]; //so really its object["key"]
 
   return value;
 };
