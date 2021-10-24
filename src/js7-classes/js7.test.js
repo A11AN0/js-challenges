@@ -6,7 +6,7 @@ const { Coordinate, Alert, Loader, Counter, Engine, Modal, BookShelf, BankAccoun
  * REMOVE X FROM xdescribe FUNCTION TO STOP SKIPPING TEST BLOCKS
  */
 
-describe("Testing Coordinate class", () => {
+xdescribe("Testing Coordinate class", () => {
   const coordOne = new Coordinate(5, 10);
   const coordTwo = new Coordinate(45, 17);
 
@@ -460,7 +460,7 @@ xdescribe("Testing BookShelf class", () => {
   });
 });
 
-xdescribe("Testing BankAccount class", () => {
+describe("Testing BankAccount class", () => {
   let bankAccount;
 
   beforeEach(() => {
