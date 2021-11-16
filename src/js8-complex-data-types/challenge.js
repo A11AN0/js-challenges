@@ -17,7 +17,11 @@
  * @returns {string[]} A list of the employees quotes for the website
  */
 export const getEmployeeQuotes = (employeeArr) => {
-  // Write code here
+  const quotes = []
+  employeeArr.forEach(object=>{
+    quotes.push(object.quote)
+  })
+  return quotes;
 };
 
 /**
@@ -27,7 +31,8 @@ export const getEmployeeQuotes = (employeeArr) => {
  * @returns {{name: string, quote: string, yearsEmployed: number, isManagement: boolean}[]} An array containing only managers
  */
 export const getTheManagers = (employeeArr) => {
-  // Write code here
+  const managers = employeeArr.filter(employee => employee.isManagement  == true)
+  return managers
 };
 
 /**
@@ -37,7 +42,8 @@ export const getTheManagers = (employeeArr) => {
  * @returns {number} The number of the keys on the object
  */
 export const getNumberOfKeys = (object) => {
-  // Write code here
+  const keysArr = Object.keys(object)
+  return keysArr.length
 };
 
 /* Intermediate Challenges */
@@ -50,7 +56,12 @@ export const getNumberOfKeys = (object) => {
  * @returns {{name: string, price: number, hasFreeShipping: boolean, quantity: number}} The most expensive item in the shopping basket
  */
 export const findMostExpensiveItem = (shoppingBasketArr) => {
-  // Write code here
+  //1. Sort array (most expensive object first)
+  const sortedArr = shoppingBasketArr.sort((a,b)=>{
+    return b.price - a.price
+  })
+  //2. Apparently just return the object alone
+  return sortedArr[0]
 };
 
 /**
@@ -69,7 +80,12 @@ export const findMostExpensiveItem = (shoppingBasketArr) => {
  * @returns {{name: string, price: number, hasFreeShipping: boolean, quantity: number, totalPrice: number}[]} A new array where each object has had a total price added to it
  */
 export const settotalPrice = (shoppingBasketArr) => {
-  // Write code here
+  const clone = JSON.stringify(shoppingBasketArr)
+  const newArr = JSON.parse(clone).map((object)=>{
+    object.totalPrice = object.quantity * object.price
+    return object
+  })
+  return newArr;
 };
 
 /**
@@ -79,7 +95,9 @@ export const settotalPrice = (shoppingBasketArr) => {
  * @returns {number} The total cost of the order
  */
 export const totalShoppingBasket = (shoppingBasketArr) => {
-  // Write code here
+  let realTotal = 0
+  shoppingBasketArr.forEach(item =>{realTotal += item.totalPrice})
+  return realTotal
 };
 
 /* Advanced Challenges */
@@ -92,7 +110,12 @@ export const totalShoppingBasket = (shoppingBasketArr) => {
  * @returns {{id: number, name: string, ingredients: string[], country: string}[]} An array of cleaned meal objects
  */
 export const getImportantKeys = (mealsArr) => {
-  // Write code here
+  const newArr = JSON.parse(JSON.stringify(mealsArr))
+  newArr.forEach(mealObject =>{
+    delete mealObject.timeStamp
+    delete mealObject.userCreated
+  })
+  return newArr
 };
 
 /**
@@ -106,7 +129,12 @@ export const getImportantKeys = (mealsArr) => {
  * @returns {{id: number, name: string, ingredients: string[], country: string, isVegetarian: boolean, timeToCook: number}[]}
  */
 export const setImportantKeys = (mealsArr) => {
-  // Write code here
+  const newArr = JSON.parse(JSON.stringify(mealsArr))
+  newArr.forEach(object=>{
+    typeof object.isVegetarian == "boolean"? null : object.isVegetarian = false
+    typeof object.timeToCook == "number"? null : object.timeToCook = 15
+  })
+  return newArr
 };
 
 /* Expert Challenge */
