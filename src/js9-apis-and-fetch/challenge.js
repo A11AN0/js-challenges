@@ -18,7 +18,11 @@
  * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[]} The data from the API
  */
  export const getData = (url) => {
-  // Your code here
+  return fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      return data
+    })
 };
 
 /**
@@ -28,7 +32,14 @@
  * @returns {string[]} The list of names from the API
  */
 export const getNames = (url) => {
-  // Your code here
+  return fetch(url)
+    .then((result) => result.json())
+    .then((data) => {
+      return data.map(person => {
+        return person.name
+      });
+    })
+
 };
 
 /**
@@ -38,7 +49,11 @@ export const getNames = (url) => {
  * @return {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[]} The employed people from the API
  */
 export const getEmployedPeople = (url) => {
-  // Your code here
+  return fetch(url)
+    .then((result) => result.json())
+    .then((data) => {
+      return data.filter(person => person.isEmployed)
+    })
 };
 
 /* Intermediate Challenges */
@@ -52,8 +67,14 @@ export const getEmployedPeople = (url) => {
  * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean} | string} A person object OR A string saying "Person not found"
  */
 export const findPersonWithId = (url, id) => {
-  // Your code here
+  return fetch(url)
+    .then((result) => result.json())
+    .then( (person) => {
+      const personObject = person.find(object => object.id === id)
+      return personObject? personObject : 'Person not found'
+    })
 };
+
 
 /**
  * A function which takes a url and an interest. It will fetch from an API at the url and return people who have a
@@ -64,7 +85,15 @@ export const findPersonWithId = (url, id) => {
  * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[] | string} A group of person objects OR A string saying "No people with interest found"
  */
 export const getPeopleWithMatchingInterests = (url, interest) => {
-  // Your code here
+  return fetch(url)
+    .then((result) => result.json())
+    .then( (array) => {
+      const matchingPeoples =  array.filter((person) => {
+        const matchingInterest = person.interests.find(theirInterest => theirInterest === interest)
+        return matchingInterest
+      })
+      return matchingPeoples.length > 0? matchingPeoples : 'No people with interest found'
+  })
 };
 
 /* Advanced Challenges */
@@ -102,7 +131,18 @@ export const getPeopleWithMatchingInterests = (url, interest) => {
  * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean, decscription: string}[]} A group of person objects with added description key
  */
 export const setDescriptions = (url) => {
-  // Your code here
+  return fetch(url)
+    .then((result) => result.json())
+    .then((peopleArr) =>{
+      const newPeopleArr = JSON.parse(JSON.stringify(peopleArr))
+      return newPeopleArr.map((person) => {
+        const amIEmployed = () => person.isEmployed? 'I am' : 'I am not';
+        person.description = `My name is ${person.name}, I am ${person.age} years old and ${person.height}cm tall. I enjoy ${person.interests[0]}, ${person.interests[1]} and ${person.interests[2]}. ${amIEmployed()} currently employed`
+        return person
+      })
+    })
+
+  
 };
 
 /* Expert Challenges */

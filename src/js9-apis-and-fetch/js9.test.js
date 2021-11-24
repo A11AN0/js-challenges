@@ -21,7 +21,7 @@ beforeEach(() => {
   window.fetch = mockFetch;
 });
 
-describe("getData() tests", () => {
+xdescribe("getData() tests", () => {
   it("Fetch should have been called once", () => {
     getData("./mockPersonApi.json");
     expect(fetch).toHaveBeenCalledTimes(1);
@@ -33,7 +33,7 @@ describe("getData() tests", () => {
   });
 });
 
-describe("getNames() tests", () => {
+xdescribe("getNames() tests", () => {
   it("Fetch should have been called once", () => {
     getNames("./mockPersonApi.json");
     expect(fetch).toHaveBeenCalledTimes(1);
@@ -46,7 +46,7 @@ describe("getNames() tests", () => {
   });
 });
 
-describe("getEmployedPeople() tests", () => {
+xdescribe("getEmployedPeople() tests", () => {
   const mockApiResponse = [
     {
       id: "001",
@@ -88,7 +88,7 @@ describe("getEmployedPeople() tests", () => {
   });
 });
 
-describe("findPersonWithId() tests", () => {
+xdescribe("findPersonWithId() tests", () => {
   const dummyId001 = {
     id: "001",
     name: "Peter",
@@ -129,7 +129,7 @@ describe("findPersonWithId() tests", () => {
   });
 });
 
-describe("getPeopleWithMatchingInterests() tests", () => {
+xdescribe("getPeopleWithMatchingInterests() tests", () => {
   const dummySwimming = [
     {
       id: "001",
@@ -279,7 +279,7 @@ describe("setDescription() tests", () => {
   });
 });
 
-describe("setInterestDetails() tests", () => {
+xdescribe("setInterestDetails() tests", () => {
   const dummyDetailedInterests = [
     {
       age: 47,

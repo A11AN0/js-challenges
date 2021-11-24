@@ -1,4 +1,4 @@
-/* This challenge build upon previous knowledge and introduces the concept of complex data types (arrays of objects) */
+test/* This challenge build upon previous knowledge and introduces the concept of complex data types (arrays of objects) */
 
 /* 
   All challenges in this repository are seperated into four levels: Foundation, Intermediate, Advanced and Expert.
